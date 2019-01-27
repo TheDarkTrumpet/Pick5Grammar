@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using Pick5Grammar.Models;
+using System.Text;
 
 namespace Pick5Grammar.src
 {
@@ -25,16 +26,19 @@ namespace Pick5Grammar.src
 
         private void ReadExcelFile()
         {
-            using (var stream = File.Open(@"\\tsclient\Desktop\Example.xlsx", FileMode.Open, FileAccess.Read))
+            using (var stream = File.Open(@"Example.xlsx", FileMode.Open, FileAccess.Read))
             {
-                using (var reader = ExcelReaderFactory.CreateReader(stream))
+                ExcelReaderConfiguration readerConfig = new ExcelReaderConfiguration() {
+                    FallbackEncoding = Encoding.GetEncoding("utf-8")
+                };
+                using (var reader = ExcelReaderFactory.CreateReader(stream, readerConfig))
 	            {
-		            ExcelDataSetConfiguration cofig = new ExcelDataSetConfiguration()
+		            ExcelDataSetConfiguration config = new ExcelDataSetConfiguration()
 		            {
 			            ConfigureDataTable = _ => new ExcelDataTableConfiguration() { UseHeaderRow = true}
 		            };
 
-		            DataSet result = reader.AsDataSet(cofig);
+		            DataSet result = reader.AsDataSet(config);
                     _fullTable = result.Tables[0];
 	            }
             }
@@ -56,7 +60,7 @@ namespace Pick5Grammar.src
                 randomlyPicked.Add(new GrammarReference() {
                     Concept = row["Grammar"] as String,
                     Proficiency = row["Proficiency"] as String,
-                    Minna = row["みんな"] as String,
+                    Minna = row["Minna"] as String,
                     DXJG = row["DXJG"] as String,
                     SoMatoMe = row["So-Matome"] as String,
                     Journal = row["Journal"] as String,
