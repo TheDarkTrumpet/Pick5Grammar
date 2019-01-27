@@ -19,7 +19,7 @@ Once you have it installed, and this repository checked out, cd into the directo
 ```bash
 dotnet run   # Gives command line options
 dotnet run -i <INPUT_EXCEL>   # Load the identified excel file, use Excel.xlsx if you want to see the test output
-dotnet run -i <INPUT_EXCEL -c N  # Same as above, but you can specify the number of entries you want to see
+dotnet run -i <INPUT_EXCEL> -c N  # Same as above, but you can specify the number of entries you want to see
 ```
 
 Limitations and Roadmap
