@@ -52,19 +52,31 @@ namespace Pick5Grammar.src
             }
 
             Random rnd = new Random();
-            for(int x = 0; x < _numOutput; x++)
-            {
+            List<int> seenRands = new List<int>();
+
+            int x = _numOutput;
+            while(x > 0) {
                 int newRecord = rnd.Next(0, totalAvailable);
-                DataRow row = _fullTable.Rows[newRecord];
-                randomlyPicked.Add(new GrammarReference() {
+                if(!seenRands.Contains(newRecord))
+                {
+                    DataRow row = _fullTable.Rows[newRecord];
+                    randomlyPicked.Add(GetGrammarReferenceFromRow(row));
+                    seenRands.Add(newRecord);
+                    x -= 1;
+                }
+            }
+        }
+
+        private GrammarReference GetGrammarReferenceFromRow(DataRow row)
+        {
+            return new GrammarReference() {
                     Concept = row["Grammar"] as String,
                     Proficiency = row["Proficiency Level"] as String,
                     Minna = row["みんな"] as String,
                     DXJG = row["DXJG"] as String,
                     SoMatoMe = row["So-Matome"] as String,
                     Journal = row["Journal"] as String,
-                });
-            }
+                };
         }
 
         public override string ToString() {
