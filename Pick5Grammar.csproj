@@ -3,6 +3,11 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Authors>David Thole</Authors>
+    <Company>TheDarkTrumpet</Company>
+    <AssemblyTitle>Pick5Grammar</AssemblyTitle>
+    <Description>A program, given an excel file, will pick 5 random entries for review</Description>
+    <Copyright>TheDarkTrumpet</Copyright>
   </PropertyGroup>
 
   <ItemGroup>

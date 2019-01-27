@@ -11,7 +11,14 @@ namespace Pick5Grammar.Models
 
         public override string ToString()
         {
-            return "Concept";
+            string formattedString = $@"{Concept}
+                Proficiency: {Proficiency}
+                Minna Reference: {Minna}
+                DXJG Reference: {DXJG}
+                So Matome: {SoMatoMe}
+                Journal: {Journal}";
+
+            return formattedString;
         }
     }
 }

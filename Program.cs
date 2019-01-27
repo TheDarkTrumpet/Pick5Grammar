@@ -24,6 +24,7 @@ namespace Pick5Grammar
         static void ExecutePick5(Options options)
         {
             Excel excel = new Excel(options.InputFile, options.randomEntries);
+            Console.WriteLine(excel.ToString());
         }
     }
 }

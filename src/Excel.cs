@@ -5,6 +5,7 @@ using System.Data;
 using System.IO;
 using Pick5Grammar.Models;
 using System.Text;
+using System.Linq;
 
 namespace Pick5Grammar.src
 {
@@ -67,7 +68,7 @@ namespace Pick5Grammar.src
         }
 
         public override string ToString() {
-            return "foo, for now";
+            return String.Join("\n\n", randomlyPicked.Select(x => x.ToString()));
         }
     }
 }
