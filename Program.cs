@@ -8,7 +8,6 @@ namespace Pick5Grammar
         static void Main(string[] args)
         {
             Excel excel = new Excel("Example.xlsx", args.Length > 0 ? int.Parse(args[0]) : 5);
-            Console.WriteLine(args[0]);
         }
     }
 }

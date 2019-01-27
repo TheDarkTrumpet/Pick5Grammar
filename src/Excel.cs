@@ -26,12 +26,10 @@ namespace Pick5Grammar.src
 
         private void ReadExcelFile()
         {
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
             using (var stream = File.Open(@"Example.xlsx", FileMode.Open, FileAccess.Read))
             {
-                ExcelReaderConfiguration readerConfig = new ExcelReaderConfiguration() {
-                    FallbackEncoding = Encoding.GetEncoding("utf-8")
-                };
-                using (var reader = ExcelReaderFactory.CreateReader(stream, readerConfig))
+                using (var reader = ExcelReaderFactory.CreateReader(stream))
 	            {
 		            ExcelDataSetConfiguration config = new ExcelDataSetConfiguration()
 		            {
@@ -59,8 +57,8 @@ namespace Pick5Grammar.src
                 DataRow row = _fullTable.Rows[newRecord];
                 randomlyPicked.Add(new GrammarReference() {
                     Concept = row["Grammar"] as String,
-                    Proficiency = row["Proficiency"] as String,
-                    Minna = row["Minna"] as String,
+                    Proficiency = row["Proficiency Level"] as String,
+                    Minna = row["みんな"] as String,
                     DXJG = row["DXJG"] as String,
                     SoMatoMe = row["So-Matome"] as String,
                     Journal = row["Journal"] as String,
