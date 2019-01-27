@@ -28,7 +28,7 @@ namespace Pick5Grammar.src
         private void ReadExcelFile()
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-            using (var stream = File.Open(@"Example.xlsx", FileMode.Open, FileAccess.Read))
+            using (var stream = File.Open(_inFile, FileMode.Open, FileAccess.Read))
             {
                 using (var reader = ExcelReaderFactory.CreateReader(stream))
 	            {
