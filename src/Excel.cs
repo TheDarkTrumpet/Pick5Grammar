@@ -1,4 +1,6 @@
 using ExcelDataReader;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
 
@@ -10,10 +12,14 @@ namespace Pick5Grammar.src
         private readonly int _numOutput;
         private DataTable _fullTable;
 
+        private List<Tuple<string, string>> randomlyPicked = new List<Tuple<string, string>>();
+
         public Excel(string inFile, int numOutput = 5)
         {
             _inFile = inFile;
             _numOutput = numOutput;
+            ReadExcelFile();
+            PickRandom();
         }
 
         private void ReadExcelFile()
@@ -32,6 +38,12 @@ namespace Pick5Grammar.src
 	            }
             }
         }
+
+        private void PickRandom()
+        {
+            
+        }
+
         public override string ToString() {
             return "foo, for now";
         }
