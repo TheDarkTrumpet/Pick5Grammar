@@ -22,6 +22,63 @@ dotnet run -i <INPUT_EXCEL>   # Load the identified excel file, use Excel.xlsx i
 dotnet run -i <INPUT_EXCEL> -c N  # Same as above, but you can specify the number of entries you want to see
 ```
 
+Easier Execution
+================
+
+Running the above can be a real chore to have to do time and time again.  One way to get around this is to 'publish' the application, then copy the binaries to your path, then set an alias.  To do this on OSX (if you want more instructions for other OSes, submit at ticket):
+
+```bash
+cd Pick5Grammar
+dotnet build
+dotnet publish -c Release -r osx-x64
+mkdir ~/tools
+mkdir ~/tools/lib
+cp -R bin/Release/netcoreapp2.1/osx-x64/publish ~/tools/lib/pick5grammar
+echo "alias pick5='~/tools/lib/pick5grammar/Pick5Grammar -i /PATH/TO/INDEX.xlsx'" >> ~/.bashrc   #or .zshrc
+source ~/.bashrc  #or .zshrc
+```
+
+A much better solution than the above is to also make a `~/tools/bin` directory, do an `ln -s` between the `lib/pick5grammar/Pick5Grammar` and the `bin/Pick5Grammar`, and update your PATH to include `~/tools/bin`.  User based shell commands are best here anyways.
+
+Running the alias, after the above, should give output something like:
+
+```
+Double Particles
+                Proficiency: N4
+                Minna Reference: 27 #7
+                DXJG Reference: 
+                So Matome: 
+                Journal: G2-213
+
+Vています
+                Proficiency: N4
+                Minna Reference: 28 #2
+                DXJG Reference: B155
+                So Matome: N4.W4D5
+                Journal: G2-215/G2-73
+
+できます
+                Proficiency: N4
+                Minna Reference: 27 #4
+                DXJG Reference: B8
+                So Matome: 
+                Journal: G2-212
+
+それで
+                Proficiency: N4
+                Minna Reference: 28 #4
+                DXJG Reference: B413
+                So Matome: N4.W3D4
+                Journal: G2-217
+
+Vた＋らいいですか
+                Proficiency: N4
+                Minna Reference: 26 #3
+                DXJG Reference: 
+                So Matome: N4.W2D1.3
+                Journal: G2-207
+```
+
 Limitations and Roadmap
 =======================
 
